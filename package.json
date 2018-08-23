@@ -31,6 +31,8 @@
     "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "^1.7.2",
     "fs-jetpack": "^2.1.0"
   },
   "devDependencies": {
