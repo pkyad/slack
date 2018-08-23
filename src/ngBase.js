@@ -5,8 +5,17 @@ var myApp = angular.module('helloworld', ['ui.router']);
 myApp.config(function($stateProvider) {
   var helloState = {
     name: 'hello',
-    url: '/hello',
-    template: '<h3>hello world!</h3>'
+    url: '/hello/:pk',
+    templateUrl: 'threadview.html',
+    controller: function($scope , $state) {
+      console.log($scope);
+
+      console.log($state.params);
+
+      $scope.pk = $state.params.pk;
+
+
+    }
   }
 
   var aboutState = {
@@ -18,3 +27,23 @@ myApp.config(function($stateProvider) {
   $stateProvider.state(helloState);
   $stateProvider.state(aboutState);
 });
+
+
+myApp.run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
+  $rootScope.$state = $state;
+  $rootScope.$stateParams = $stateParams;
+  $rootScope.$on("$stateChangeError", console.log.bind(console));
+}]);
+
+
+
+myApp.controller("main" , function($scope){
+
+  $scope.title = "Chat window";
+  $scope.friends = [
+    {name : 'Pradeep' , pk : 1},
+    {name : 'Pradeep2' , pk : 2},
+  ]
+
+
+})

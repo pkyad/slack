@@ -4,31 +4,29 @@
   <meta charset="utf-8">
   <title>Electron Boilerplate</title>
 </head>
-<body ng-app="helloworld">
+<body ng-app="helloworld" ng-controller="main">
 
-  <div id="app" class="container" style="display: none;">
-    <h1 id="greet"></h1>
-    <p>
-      Welcome to <a href="http://cioc.in" class="js-external-link">Electron</a> app running on this <strong id="os"></strong> machine.
-    </p>
-    <p>
-      Pradeep
-    </p>
-    <p>
-      Environment: <strong id="env"></strong>
-    </p>
-    <p>
-      Electron version: <strong id="electron-version"></strong>
-    </p>
+  <div class="row">
+    <div class="col-md-3" style="background:rgb(238, 54, 44);height:100vh;">
+
+      <img src="images/avatar3.png" alt="" class="img">
+
+      <ul>
+        <li ng-repeat="f in friends"><a ng-click="$state.go('hello' , {pk : f.pk})" ui-sref-active="active">{{f.name}}</a></li>
+        <li><a ui-sref="about" ui-sref-active="active">About</a></li>
+      </ul>
+
+    </div>
+    <div ui-view class="col-md-9" style="background:#eeeeee;">
+
+      <div class="row">
+        {{title}}
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
   </div>
-
-  <h1>{{name}}</h1>
-  <input type="text" ng-model="name" name="" value="">
-
-    <a ui-sref="hello" ui-sref-active="active">Hello</a>
-    <a ui-sref="about" ui-sref-active="active">About</a>
-
-    <ui-view></ui-view>
 
   <script src="app.js"></script>
 </body>
